@@ -1,11 +1,11 @@
 import AddItem from "./addItem";
 import { DisplayTransaction } from "./displayTransaction";
 
-function Home() {
+function Home(props) {
     return(
         <div>
-            <DisplayTransaction list={transaction} />
-            <AddItem add={addTransaction} />
+            <DisplayTransaction list={props.list} />
+            <AddItem add={props.add} />
         </div>
     );
 }

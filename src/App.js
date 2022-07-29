@@ -7,9 +7,9 @@ import Home from './components/home';
 import Login from './components/login';
 import SignUp from './components/signup';
 
-import {BrowserRouter as Router, Switch, Router} from 'react-router-dom'
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
-function App(props) {
+function App() {
 
   const [transactionType, setTransactionType] = useState([]);
   const [transaction, setTransaction] = useState([]);
@@ -29,18 +29,16 @@ function App(props) {
 
     <Router>
       <Switch>
-        <Route path="/" component={Login}>
+        <Route exact path="/" component={Login}></Route>
+        <Route path="/sign-up" component={SignUp}></Route>
 
+        <Route path="/home">
+          <Home list={transaction} add={addTransaction} />
         </Route>
       </Switch>
     </Router>
 
 
-    <div className="container">
-
-        <DisplayTransaction list={transaction} />
-        <AddItem  add={addTransaction} />
-    </div>
   );
 }
 
