@@ -1,3 +1,4 @@
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import {useHistory} from 'react-router-dom'
 import {Link} from 'react-router-dom'
 
@@ -12,6 +13,12 @@ function Login(){
     let history = useHistory() ;
 
     const login = (()=>{
+
+        signInWithEmailAndPassword(auth, email, password).then(()=>{
+
+        }).catch(()=>{
+            console.log(err)
+        })
         history.push("/home");
     })
 
