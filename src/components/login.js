@@ -1,9 +1,14 @@
+import React, {useState} from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import {useHistory} from 'react-router-dom'
 import {Link} from 'react-router-dom'
 
+import {auth} from '../config/firebase'
+
 function Login(){
 
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
     const btn = {
         width:'150px',
         height:'30',
@@ -15,8 +20,9 @@ function Login(){
     const login = (()=>{
 
         signInWithEmailAndPassword(auth, email, password).then(()=>{
+        history.push("/home");
 
-        }).catch(()=>{
+        }).catch((err)=>{
             console.log(err)
         })
         history.push("/home");
@@ -27,9 +33,15 @@ function Login(){
         <div className="container">
 
             <h1>Login</h1>
-            <input type="email" placeholder="Enter your email" /> <br/><br/>
-            <input type="password" placeholder="Enter your password" />
-            <button style={btn} onClick={login}>Login</button>
+            <input type="email" placeholder="Enter your email" 
+            onChange = {(e)=> setEmail(e.target.value)}/> <br/><br/>
+
+            <input type="password" placeholder="Enter your password" 
+            onChange = {(e)=> setPassword(e.target.value)}/> <br/><br/>
+            
+            <button style={btn} onClick={login}>
+                Login{" "}
+            </button>
 
             <span>Don't have an account?</span>{" "}
             <span> 
