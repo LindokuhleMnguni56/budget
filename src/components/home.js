@@ -1,7 +1,30 @@
+import React , {useState, useEffect} from 'react'
 import AddItem from "./addItem";
 import { DisplayTransaction } from "./displayTransaction";
+import {BudgetBalance} from './balance'
 
 function Home(props) {
+
+    const [expense, setExpense] = useState(0);
+    const[income, setIncome]= useState(0);
+
+    
+
+    useEffect[()=>{
+        
+        let expense = 0;
+        let income = 0; 
+
+        for (let index = 0; index < props.list.length; index++) {
+          if(props.list[index].transaction== "Expense"){
+
+                expense = expense + props.list[index].amount;
+          }else{
+                income = income + list[index].amount;
+          }
+            
+        }
+    }]
     return(
         <div className="container">
             <DisplayTransaction list={props.list} />

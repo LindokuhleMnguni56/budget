@@ -16,7 +16,7 @@ function AddItem(props){
 
         
 
-        const add = (()=> {
+        const add = ()=> {
             const collectionRef = collection(db, "transaction");
              const transaction = {
                 item:item,
@@ -37,8 +37,8 @@ function AddItem(props){
             console.log(transactionType)
 
         props.add (amount, item, transactionType) ;
-    
-
+        }
+        
     return(
         <div>
        
@@ -64,5 +64,6 @@ function AddItem(props){
 
     
 }
+
 
 export default AddItem;
