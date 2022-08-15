@@ -10,7 +10,7 @@ function Home(props) {
 
     
 
-    useEffect[()=>{
+    useEffect(()=>{
         
         let expense = 0;
         let income = 0; 
@@ -18,15 +18,18 @@ function Home(props) {
         for (let index = 0; index < props.list.length; index++) {
           if(props.list[index].transaction== "Expense"){
 
-                expense = expense + props.list[index].amount;
+                expense = expense + parseInt(props.list[index].amount);
           }else{
-                income = income + list[index].amount;
-          }
-            
+                income = income + parseInt(props.list[index].amount);
+          }  
         }
-    }]
+        setIncome(income);
+        setExpense(expense); 
+
+    } , [props.list.length]);
     return(
         <div className="container">
+            <BudgetBalance expense = {expense} income={income}/>
             <DisplayTransaction list={props.list} />
             <AddItem add={props.add} />
         </div>
